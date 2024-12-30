@@ -1,1 +1,14 @@
 Here are fiexes for services!
+
+
+I found a fix for the "incorrect parameters" error when trying to change the settings of certain Services in the Services control panel.
+
+The XXXXX or random string after I believe actually refers to it being a user service so it's just an identifier (feel free to correct me). That's not technically the name of the service so when you try to change settings and save them, it fails because it's trying to save it with the "Service_XXXXX" instead of "Service".
+
+FIX - in administrator command prompt:
+sc config "ConsentUxUserSvc" start= auto
+
+Put whatever service you want to edit between the quotations WITHOUT the "_XXXXX". It seems to have also fixed a few small errors with those services.
+
+To disable: sc config "ConsentUxUserSvc" start= disabled
+
